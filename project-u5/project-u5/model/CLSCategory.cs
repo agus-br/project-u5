@@ -10,8 +10,9 @@ namespace project_u5.model
         public String Description { get; set; }
 
         // Constructor con parámetros
-        public CLSCategory(String name, String description)
+        public CLSCategory(int id, String name, String description)
         {
+            ID = id;
             Name = name;
             Description = description;
         }

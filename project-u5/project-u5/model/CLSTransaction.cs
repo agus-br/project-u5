@@ -15,8 +15,9 @@ namespace project_u5.model
         public CLSPlace Place { get; set; }
 
         // Constructor con parámetros
-        public CLSTransaction(String concept, DateTime date, Double amount, String type, String notes, CLSCategory category, CLSPlace place)
+        public CLSTransaction(int id, String concept, DateTime date, Double amount, String type, String notes, CLSCategory category, CLSPlace place)
         {
+            ID = id;
             Concept = concept;
             Date = date;
             Amount = amount;
