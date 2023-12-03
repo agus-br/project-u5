@@ -1,11 +1,63 @@
 ﻿using MySql.Data.MySqlClient;
 using project_u5.model;
 using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace project_u5.data
 {
     public class PlaceDAO
     {
+        public static List<CLSPlace> GetAll()
+        {
+            List<CLSPlace> places = null;
+            if (Connection.Connect())
+            {
+                //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
+                try
+                {
+                    String sentence = "getAllPlaces";
+
+                    MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    
+                    DataTable dt = new DataTable();
+                    MySqlDataAdapter da = new MySqlDataAdapter();
+                    da.SelectCommand = command;
+                    da.Fill(dt);
+
+                    //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
+                    places = new List<CLSPlace>();
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        CLSPlace place = new CLSPlace(
+                            Convert.ToInt32(fila["id"]),
+                            fila["name"].ToString(),
+                            fila["city"].ToString(),
+                            fila["country"].ToString()
+                            );
+                        places.Add(place);
+                    }
+                    command.Dispose();
+                    //trans.Commit();
+                    return places;
+                }
+                catch (Exception e)
+                {
+                    //trans.Rollback();
+                    return places;
+                }
+                finally
+                {
+                    Connection.Disconnect();
+                }
+            }
+            else
+            {
+                return places;
+            }
+        }
+
         public static int AddPlace(CLSPlace p)
         {
             if (Connection.Connect())

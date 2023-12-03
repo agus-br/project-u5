@@ -11,8 +11,9 @@ namespace project_u5.model
         public String Country { get; set; }
 
         // Constructor con parámetros
-        public CLSPlace(String name, String city, String country)
+        public CLSPlace(int id, String name, String city, String country)
         {
+            ID = id;
             Name = name;
             City = city;
             Country = country;
