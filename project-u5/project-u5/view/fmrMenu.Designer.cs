@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.btnPlaces = new System.Windows.Forms.Button();
-            this.btnCategories = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +82,7 @@
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTransactions.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransactions.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnTransactions.Location = new System.Drawing.Point(327, 171);
+            this.btnTransactions.Location = new System.Drawing.Point(247, 158);
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.Size = new System.Drawing.Size(177, 38);
             this.btnTransactions.TabIndex = 8;
@@ -99,29 +98,13 @@
             this.btnPlaces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPlaces.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaces.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnPlaces.Location = new System.Drawing.Point(174, 171);
+            this.btnPlaces.Location = new System.Drawing.Point(94, 158);
             this.btnPlaces.Name = "btnPlaces";
             this.btnPlaces.Size = new System.Drawing.Size(127, 38);
             this.btnPlaces.TabIndex = 7;
-            this.btnPlaces.Text = "Lugares";
+            this.btnPlaces.Text = "Tienda";
             this.btnPlaces.UseVisualStyleBackColor = false;
             this.btnPlaces.Click += new System.EventHandler(this.btnPlaces_Click);
-            // 
-            // btnCategories
-            // 
-            this.btnCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategories.BackColor = System.Drawing.Color.Gray;
-            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCategories.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategories.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnCategories.Location = new System.Drawing.Point(17, 171);
-            this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Size = new System.Drawing.Size(135, 38);
-            this.btnCategories.TabIndex = 5;
-            this.btnCategories.Text = "Categorías";
-            this.btnCategories.UseVisualStyleBackColor = false;
-            this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
             // 
             // fmrMenu
             // 
@@ -132,7 +115,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnTransactions);
             this.Controls.Add(this.btnPlaces);
-            this.Controls.Add(this.btnCategories);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fmrMenu";
             this.Text = "Menu";
@@ -149,6 +131,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTransactions;
         private System.Windows.Forms.Button btnPlaces;
-        private System.Windows.Forms.Button btnCategories;
     }
 }

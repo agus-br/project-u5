@@ -6,45 +6,46 @@ using System.Data;
 
 namespace project_u5.data
 {
-    public class CategoryDAO
+    public class StoreDAO
     {
-        public static List<CLSCategory> GetAll()
+        public List<CLSStore> GetAll()
         {
-            List<CLSCategory> categories = null;
+            List<CLSStore> stores = null;
             if (Connection.Connect())
             {
                 //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "getAllCategories";
+                    String sentence = "getAllStores";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = CommandType.StoredProcedure;
-
+                    
                     DataTable dt = new DataTable();
                     MySqlDataAdapter da = new MySqlDataAdapter();
                     da.SelectCommand = command;
                     da.Fill(dt);
 
-                    categories = new List<CLSCategory>();
                     //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
+                    stores = new List<CLSStore>();
                     foreach (DataRow fila in dt.Rows)
                     {
-                        CLSCategory category = new CLSCategory(
+                        CLSStore place = new CLSStore(
                             Convert.ToInt32(fila["id"]),
                             fila["name"].ToString(),
-                            fila["description"].ToString()
+                            fila["address"].ToString(),
+                            fila["contact"].ToString()
                             );
-                        categories.Add(category);
+                        stores.Add(place);
                     }
                     command.Dispose();
                     //trans.Commit();
-                    return categories;
+                    return stores;
                 }
                 catch (Exception e)
                 {
                     //trans.Rollback();
-                    return categories;
+                    return stores;
                 }
                 finally
                 {
@@ -53,23 +54,23 @@ namespace project_u5.data
             }
             else
             {
-                return categories;
+                return stores;
             }
         }
 
-        public static CLSCategory Get(int categoryID)
+        public CLSStore Get(int storeID)
         {
-            CLSCategory category = null;
+            CLSStore store = null;
             if (Connection.Connect())
             {
                 //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "getCategory";
+                    String sentence = "getStore";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("categoryID", categoryID);
+                    command.Parameters.AddWithValue("storeID", storeID);
                     DataTable dt = new DataTable();
                     MySqlDataAdapter da = new MySqlDataAdapter();
                     da.SelectCommand = command;
@@ -78,20 +79,21 @@ namespace project_u5.data
                     //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
                     foreach (DataRow fila in dt.Rows)
                     {
-                        category = new CLSCategory(
+                        store = new CLSStore(
                             Convert.ToInt32(fila["id"]),
                             fila["name"].ToString(),
-                            fila["description"].ToString()
-                        );
+                            fila["address"].ToString(),
+                            fila["contact"].ToString()
+                            );
                     }
                     command.Dispose();
                     //trans.Commit();
-                    return category;
+                    return store;
                 }
                 catch (Exception e)
                 {
                     //trans.Rollback();
-                    return category;
+                    return store;
                 }
                 finally
                 {
@@ -100,27 +102,27 @@ namespace project_u5.data
             }
             else
             {
-                return category;
+                return store;
             }
         }
 
-        public static int AddCategory(CLSCategory c)
+        public int AddPlace(CLSStore s)
         {
             if (Connection.Connect())
             {
                 MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "addCategory";
+                    String sentence = "addPlace";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("categoryName", c.Name);
-                    command.Parameters.AddWithValue("categoryDescription", c.Description);
+                    command.Parameters.AddWithValue("placeName", s.Name);
+                    command.Parameters.AddWithValue("placeCity", s.Address);
+                    command.Parameters.AddWithValue("placeCountry", s.Contact);
 
                     command.ExecuteNonQuery();
                     command.Dispose();
-
 
                     sentence = "select last_insert_id();";
                     command = new MySqlCommand(sentence, Connection.CurrentConnection);
@@ -146,20 +148,21 @@ namespace project_u5.data
             }
         }
 
-        public static bool UpdateCategory(CLSCategory c)
+        public bool UpdatePlace(CLSStore s)
         {
             if (Connection.Connect())
             {
                 MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "updateCategory";
+                    String sentence = "updateStore";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("categoryID", c.ID);
-                    command.Parameters.AddWithValue("categoryName", c.Name);
-                    command.Parameters.AddWithValue("categoryDescription", c.Description);
+                    command.Parameters.AddWithValue("storeID", s.ID);
+                    command.Parameters.AddWithValue("storeName", s.Name);
+                    command.Parameters.AddWithValue("storeAddress", s.Address);
+                    command.Parameters.AddWithValue("storeContact", s.Contact);
 
                     command.ExecuteNonQuery();
                     command.Dispose();
@@ -183,18 +186,18 @@ namespace project_u5.data
             }
         }
 
-        public static bool DeleteCategory(int categoryID)
+        public bool DeletePlace(int storeID)
         {
             if (Connection.Connect())
             {
                 MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "deleteCategory";
+                    String sentence = "deleteStore";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("categoryID", categoryID);
+                    command.Parameters.AddWithValue("storeID", storeID);
 
                     command.ExecuteNonQuery();
                     command.Dispose();
@@ -217,7 +220,6 @@ namespace project_u5.data
                 return false;
             }
         }
-
 
     }
 }

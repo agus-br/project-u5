@@ -98,30 +98,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="data\CategoryDAO.cs" />
     <Compile Include="data\Connection.cs" />
-    <Compile Include="data\PlaceDAO.cs" />
+    <Compile Include="data\StoreDAO.cs" />
     <Compile Include="data\TransactionDAO.cs" />
-    <Compile Include="model\CLSCategory.cs" />
-    <Compile Include="model\CLSPlace.cs" />
+    <Compile Include="model\CLSStore.cs" />
     <Compile Include="model\CLSTransaction.cs" />
-    <Compile Include="view\Categories.cs">
+    <Compile Include="view\InsertUpdateStore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\Categories.Designer.cs">
-      <DependentUpon>Categories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\InsertUpdateCategories.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\InsertUpdateCategories.Designer.cs">
-      <DependentUpon>InsertUpdateCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\InsertUpdatePlaces.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\InsertUpdatePlaces.Designer.cs">
-      <DependentUpon>InsertUpdatePlaces.cs</DependentUpon>
+    <Compile Include="view\InsertUpdateStore.Designer.cs">
+      <DependentUpon>InsertUpdateStore.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,11 +117,11 @@
     <Compile Include="view\fmrMenu.Designer.cs">
       <DependentUpon>fmrMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\Places.cs">
+    <Compile Include="view\StoresCatalogue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\Places.Designer.cs">
-      <DependentUpon>Places.cs</DependentUpon>
+    <Compile Include="view\StoresCatalogue.Designer.cs">
+      <DependentUpon>StoresCatalogue.cs</DependentUpon>
     </Compile>
     <Compile Include="view\Report.cs">
       <SubType>Form</SubType>
@@ -143,15 +129,12 @@
     <Compile Include="view\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\Transactions.cs">
+    <Compile Include="view\frmAddTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\Transactions.Designer.cs">
-      <DependentUpon>Transactions.cs</DependentUpon>
+    <Compile Include="view\frmAddTransaction.Designer.cs">
+      <DependentUpon>frmAddTransaction.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="view\Categories.resx">
-      <DependentUpon>Categories.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -161,23 +144,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="view\InsertUpdateCategories.resx">
-      <DependentUpon>InsertUpdateCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\InsertUpdatePlaces.resx">
-      <DependentUpon>InsertUpdatePlaces.cs</DependentUpon>
+    <EmbeddedResource Include="view\InsertUpdateStore.resx">
+      <DependentUpon>InsertUpdateStore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\fmrMenu.resx">
       <DependentUpon>fmrMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\Places.resx">
-      <DependentUpon>Places.cs</DependentUpon>
+    <EmbeddedResource Include="view\StoresCatalogue.resx">
+      <DependentUpon>StoresCatalogue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\Transactions.resx">
-      <DependentUpon>Transactions.cs</DependentUpon>
+    <EmbeddedResource Include="view\frmAddTransaction.resx">
+      <DependentUpon>frmAddTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

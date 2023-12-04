@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace project_u5.view
@@ -15,6 +8,7 @@ namespace project_u5.view
         public fmrMenu()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -25,17 +19,17 @@ namespace project_u5.view
 
         private void btnCategories_Click(object sender, EventArgs e)
         {
-            new view.Categories().ShowDialog();
+           
         }
 
         private void btnPlaces_Click(object sender, EventArgs e)
         {
-            new view.Places().ShowDialog();
+            new view.StoresCatalogue().ShowDialog();
         }
 
         private void btnTransactions_Click(object sender, EventArgs e)
         {
-            new view.Transactions().ShowDialog();
+            new view.frmAddTransaction().ShowDialog();
         }
     }
 }

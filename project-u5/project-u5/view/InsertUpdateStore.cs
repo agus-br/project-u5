@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace project_u5.view
 {
-    public partial class InsertUpdateCategories : Form
+    public partial class InsertUpdateStore : Form
     {
-        public InsertUpdateCategories()
+        public InsertUpdateStore()
         {
             InitializeComponent();
         }
@@ -28,9 +28,18 @@ namespace project_u5.view
             }
         }
 
-        private void txtDescription_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Regex.IsMatch(e.KeyChar.ToString(), "[A-Za-z0-9\\s]+") && (int)e.KeyChar != (int)Keys.Back)
+            if (!Regex.IsMatch(e.KeyChar.ToString(), "[A-Za-z\\s]+") && (int)e.KeyChar != (int)Keys.Back)
+            {
+                e.Handled = true;
+                SystemSounds.Beep.Play();
+            }
+        }
+
+        private void txtCountry_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(e.KeyChar.ToString(), "[A-Za-z\\s]+") && (int)e.KeyChar != (int)Keys.Back)
             {
                 e.Handled = true;
                 SystemSounds.Beep.Play();
@@ -44,23 +53,33 @@ namespace project_u5.view
                 error.SetError(txtName, "Formato de nombre incorrecto");
                 return;
             }
-            if(txtDescription.Text.Length == 0)
+            if (!Regex.IsMatch(txtCity.Text, "[A-Z][a-z]+([\\s][A-Z][a-z]?)*"))
             {
-                error.SetError(txtName, "Ingrese una descripción");
+                error.SetError(txtCity, "Formato de ciudad incorrecto");
+                return;
+            }
+            if (!Regex.IsMatch(txtCountry.Text, "[A-Z][a-z]+([\\s][A-Z][a-z]?)*"))
+            {
+                error.SetError(txtCountry, "Formato de país incorrecto");
                 return;
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(txtName.Text, "[A-Z]{1}[a-z]+([\\s][A-Z][a-z]+)*"))
+            if (!Regex.IsMatch(txtName.Text, "[A-Z][a-z]+([\\s][A-Z][a-z]+)*"))
             {
                 error.SetError(txtName, "Formato de nombre incorrecto");
                 return;
             }
-            if (txtDescription.Text.Length == 0)
+            if (!Regex.IsMatch(txtCity.Text, "[A-Z][a-z]+([\\s][A-Z][a-z]?)*"))
             {
-                error.SetError(txtDescription, "Ingrese una descripción");
+                error.SetError(txtCity, "Formato de ciudad incorrecto");
+                return;
+            }
+            if (!Regex.IsMatch(txtCountry.Text, "[A-Z][a-z]+([\\s][A-Z][a-z]?)*"))
+            {
+                error.SetError(txtCountry, "Formato de país incorrecto");
                 return;
             }
         }
