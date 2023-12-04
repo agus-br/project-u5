@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace project_u5.view
 {
-    public partial class Places : Form
+    public partial class StoresCatalogue : Form
     {
-        public Places()
+        public StoresCatalogue()
         {
             InitializeComponent();
         }
@@ -25,12 +25,12 @@ namespace project_u5.view
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            new view.InsertUpdatePlaces().ShowDialog();
+            new view.InsertUpdateStore().ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            new view.InsertUpdatePlaces().ShowDialog();
+            new view.InsertUpdateStore().ShowDialog();
         }
     }
 }

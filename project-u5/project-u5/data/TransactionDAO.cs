@@ -30,26 +30,18 @@ namespace project_u5.data
                     //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
                     foreach (DataRow fila in dt.Rows)
                     {
-                        CLSCategory c = new CLSCategory(
-                            Convert.ToInt32(fila["cID"]),
-                            fila["cName"].ToString(),
-                            fila["cDescription"].ToString()
-                        );
-                        CLSPlace p = new CLSPlace(
+                        CLSStore p = new CLSStore(
                             Convert.ToInt32(fila["pID"]),
-                            fila["pName"].ToString(),
-                            fila["pCity"].ToString(),
-                            fila["pCountry"].ToString()
+                            fila["sName"].ToString(),
+                            fila["sAddress"].ToString(),
+                            fila["sContact"].ToString()
                         );
 
                         CLSTransaction transaction = new CLSTransaction(
                             Convert.ToInt32(fila["tID"]),
                             fila["tConcept"].ToString(),
                             Convert.ToDateTime(fila["tDate"]),
-                            Convert.ToDouble(fila["tAmount"]),
-                            fila["tType"].ToString(),
-                            fila["tNotes"].ToString(),
-                            c,
+                            Convert.ToDouble(fila["tTotal"]),
                             p
                             );
                         transactions.Add(transaction);
@@ -95,12 +87,7 @@ namespace project_u5.data
                     //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
                     foreach (DataRow fila in dt.Rows)
                     {
-                        CLSCategory c = new CLSCategory(
-                            Convert.ToInt32(fila["cID"]),
-                            fila["cName"].ToString(),
-                            fila["cDescription"].ToString()
-                        );
-                        CLSPlace p = new CLSPlace(
+                        CLSStore p = new CLSStore(
                             Convert.ToInt32(fila["pID"]),
                             fila["pName"].ToString(),
                             fila["pCity"].ToString(),
@@ -111,10 +98,7 @@ namespace project_u5.data
                             Convert.ToInt32(fila["tID"]),
                             fila["tConcept"].ToString(),
                             Convert.ToDateTime(fila["tDate"]),
-                            Convert.ToDouble(fila["tAmount"]),
-                            fila["tType"].ToString(),
-                            fila["tNotes"].ToString(),
-                            c,
+                            Convert.ToDouble(fila["tTotal"]),
                             p
                             );
                     }
@@ -151,11 +135,8 @@ namespace project_u5.data
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("transactionConcept", t.Concept);
                     command.Parameters.AddWithValue("transactionDate", t.Date);
-                    command.Parameters.AddWithValue("transactionAmount", t.Amount);
-                    command.Parameters.AddWithValue("transactionType", t.Type);
-                    command.Parameters.AddWithValue("transactionNotes", t.Notes);
-                    command.Parameters.AddWithValue("transactionCategoryID", t.Category.ID);
-                    command.Parameters.AddWithValue("transactionPlaceID", t.Place.ID);
+                    command.Parameters.AddWithValue("transactionTotal", t.Total);
+                    command.Parameters.AddWithValue("transactionStoreID", t.Store.ID);
 
                     command.ExecuteNonQuery();
                     command.Dispose();
@@ -198,11 +179,8 @@ namespace project_u5.data
                     command.Parameters.AddWithValue("transactionID", t.ID);
                     command.Parameters.AddWithValue("transactionConcept", t.Concept);
                     command.Parameters.AddWithValue("transactionDate", t.Date);
-                    command.Parameters.AddWithValue("transactionAmount", t.Amount);
-                    command.Parameters.AddWithValue("transactionType", t.Type);
-                    command.Parameters.AddWithValue("transactionNotes", t.Notes);
-                    command.Parameters.AddWithValue("transactionCategoryID", t.Category.ID);
-                    command.Parameters.AddWithValue("transactionPlaceID", t.Place.ID);
+                    command.Parameters.AddWithValue("transactionTotal", t.Total);
+                    command.Parameters.AddWithValue("transactionStoreID", t.Store.ID);
 
                     command.ExecuteNonQuery();
                     command.Dispose();
