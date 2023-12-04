@@ -16,5 +16,11 @@ namespace project_u5.view
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+        }
     }
 }

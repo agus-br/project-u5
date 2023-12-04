@@ -31,6 +31,7 @@
             this.dgvReports = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Name = "panel1";
@@ -63,6 +65,22 @@
             this.label1.Size = new System.Drawing.Size(89, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Reporte";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Gray;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnClose.Location = new System.Drawing.Point(561, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 34);
+            this.btnClose.TabIndex = 33;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // Report
             // 
@@ -87,5 +105,6 @@
         private System.Windows.Forms.DataGridView dgvReports;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -38,12 +39,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 3);
             this.panel1.Name = "panel1";
@@ -76,6 +81,7 @@
             this.btnUpdate.TabIndex = 21;
             this.btnUpdate.Text = "Editar";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnInsert
             // 
@@ -91,6 +97,7 @@
             this.btnInsert.TabIndex = 20;
             this.btnInsert.Text = "Insertar";
             this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // txtCountry
             // 
@@ -99,7 +106,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCountry.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtCountry.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountry.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtCountry.Location = new System.Drawing.Point(90, 175);
@@ -108,6 +114,7 @@
             this.txtCountry.Size = new System.Drawing.Size(218, 26);
             this.txtCountry.TabIndex = 19;
             this.txtCountry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountry_KeyPress);
             // 
             // label4
             // 
@@ -128,7 +135,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCity.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtCity.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtCity.Location = new System.Drawing.Point(91, 127);
@@ -137,6 +143,7 @@
             this.txtCity.Size = new System.Drawing.Size(218, 26);
             this.txtCity.TabIndex = 17;
             this.txtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // label3
             // 
@@ -157,7 +164,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtName.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtName.Location = new System.Drawing.Point(91, 74);
@@ -166,6 +172,7 @@
             this.txtName.Size = new System.Drawing.Size(218, 26);
             this.txtName.TabIndex = 15;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // label2
             // 
@@ -178,6 +185,26 @@
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 14;
             this.label2.Text = "Nombre";
+            // 
+            // error
+            // 
+            this.error.ContainerControl = this;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Gray;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnClose.Location = new System.Drawing.Point(277, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 34);
+            this.btnClose.TabIndex = 32;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // InsertUpdatePlaces
             // 
@@ -198,6 +225,7 @@
             this.Name = "InsertUpdatePlaces";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +243,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider error;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbReport = new System.Windows.Forms.GroupBox();
+            this.btnReportCategory = new System.Windows.Forms.Button();
+            this.btnReportMonth = new System.Windows.Forms.Button();
+            this.cboCategoriesReport = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtYearReport = new System.Windows.Forms.TextBox();
             this.cboMonthReport = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -36,11 +42,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtYearReport = new System.Windows.Forms.TextBox();
-            this.cboCategoriesReport = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnReportMonth = new System.Windows.Forms.Button();
-            this.btnReportCategory = new System.Windows.Forms.Button();
             this.gbInsertTransaction = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -62,9 +63,12 @@
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbReport.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbInsertTransaction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReport
@@ -92,6 +96,80 @@
             this.gbReport.TabIndex = 80;
             this.gbReport.TabStop = false;
             this.gbReport.Text = "Generar reporte";
+            // 
+            // btnReportCategory
+            // 
+            this.btnReportCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportCategory.BackColor = System.Drawing.Color.Gray;
+            this.btnReportCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReportCategory.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportCategory.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnReportCategory.Location = new System.Drawing.Point(8, 196);
+            this.btnReportCategory.Name = "btnReportCategory";
+            this.btnReportCategory.Size = new System.Drawing.Size(227, 34);
+            this.btnReportCategory.TabIndex = 83;
+            this.btnReportCategory.Text = "Reporte por categoría";
+            this.btnReportCategory.UseVisualStyleBackColor = false;
+            this.btnReportCategory.Click += new System.EventHandler(this.btnReportCategory_Click);
+            // 
+            // btnReportMonth
+            // 
+            this.btnReportMonth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportMonth.BackColor = System.Drawing.Color.Gray;
+            this.btnReportMonth.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReportMonth.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportMonth.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnReportMonth.Location = new System.Drawing.Point(8, 156);
+            this.btnReportMonth.Name = "btnReportMonth";
+            this.btnReportMonth.Size = new System.Drawing.Size(227, 34);
+            this.btnReportMonth.TabIndex = 81;
+            this.btnReportMonth.Text = "Reporte por mes";
+            this.btnReportMonth.UseVisualStyleBackColor = false;
+            this.btnReportMonth.Click += new System.EventHandler(this.btnReportMonth_Click);
+            // 
+            // cboCategoriesReport
+            // 
+            this.cboCategoriesReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.cboCategoriesReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboCategoriesReport.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCategoriesReport.ForeColor = System.Drawing.SystemColors.Menu;
+            this.cboCategoriesReport.FormattingEnabled = true;
+            this.cboCategoriesReport.Location = new System.Drawing.Point(14, 116);
+            this.cboCategoriesReport.MaxDropDownItems = 6;
+            this.cboCategoriesReport.Name = "cboCategoriesReport";
+            this.cboCategoriesReport.Size = new System.Drawing.Size(221, 25);
+            this.cboCategoriesReport.TabIndex = 82;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.label10.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.Window;
+            this.label10.Location = new System.Drawing.Point(10, 82);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(91, 21);
+            this.label10.TabIndex = 81;
+            this.label10.Text = "Categoría";
+            // 
+            // txtYearReport
+            // 
+            this.txtYearReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtYearReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtYearReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtYearReport.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYearReport.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtYearReport.Location = new System.Drawing.Point(49, 49);
+            this.txtYearReport.MaxLength = 4;
+            this.txtYearReport.Name = "txtYearReport";
+            this.txtYearReport.Size = new System.Drawing.Size(46, 26);
+            this.txtYearReport.TabIndex = 74;
+            this.txtYearReport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtYearReport.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYearReport_KeyPress);
             // 
             // cboMonthReport
             // 
@@ -179,6 +257,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-1, 2);
             this.panel1.Name = "panel1";
@@ -196,78 +275,6 @@
             this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Transacciones";
-            // 
-            // txtYearReport
-            // 
-            this.txtYearReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtYearReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.txtYearReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtYearReport.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtYearReport.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtYearReport.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtYearReport.Location = new System.Drawing.Point(49, 49);
-            this.txtYearReport.MaxLength = 4;
-            this.txtYearReport.Name = "txtYearReport";
-            this.txtYearReport.Size = new System.Drawing.Size(46, 26);
-            this.txtYearReport.TabIndex = 74;
-            this.txtYearReport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cboCategoriesReport
-            // 
-            this.cboCategoriesReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.cboCategoriesReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cboCategoriesReport.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCategoriesReport.ForeColor = System.Drawing.SystemColors.Menu;
-            this.cboCategoriesReport.FormattingEnabled = true;
-            this.cboCategoriesReport.Location = new System.Drawing.Point(14, 116);
-            this.cboCategoriesReport.MaxDropDownItems = 6;
-            this.cboCategoriesReport.Name = "cboCategoriesReport";
-            this.cboCategoriesReport.Size = new System.Drawing.Size(221, 25);
-            this.cboCategoriesReport.TabIndex = 82;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.label10.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.Window;
-            this.label10.Location = new System.Drawing.Point(10, 82);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(91, 21);
-            this.label10.TabIndex = 81;
-            this.label10.Text = "Categoría";
-            // 
-            // btnReportMonth
-            // 
-            this.btnReportMonth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportMonth.BackColor = System.Drawing.Color.Gray;
-            this.btnReportMonth.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReportMonth.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportMonth.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnReportMonth.Location = new System.Drawing.Point(8, 156);
-            this.btnReportMonth.Name = "btnReportMonth";
-            this.btnReportMonth.Size = new System.Drawing.Size(227, 34);
-            this.btnReportMonth.TabIndex = 81;
-            this.btnReportMonth.Text = "Reporte por mes";
-            this.btnReportMonth.UseVisualStyleBackColor = false;
-            // 
-            // btnReportCategory
-            // 
-            this.btnReportCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportCategory.BackColor = System.Drawing.Color.Gray;
-            this.btnReportCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReportCategory.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportCategory.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnReportCategory.Location = new System.Drawing.Point(8, 196);
-            this.btnReportCategory.Name = "btnReportCategory";
-            this.btnReportCategory.Size = new System.Drawing.Size(227, 34);
-            this.btnReportCategory.TabIndex = 83;
-            this.btnReportCategory.Text = "Reporte por categoría";
-            this.btnReportCategory.UseVisualStyleBackColor = false;
             // 
             // gbInsertTransaction
             // 
@@ -359,7 +366,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDay.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtDay.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDay.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtDay.Location = new System.Drawing.Point(273, 78);
@@ -368,6 +374,7 @@
             this.txtDay.Size = new System.Drawing.Size(45, 26);
             this.txtDay.TabIndex = 124;
             this.txtDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDay_KeyPress);
             // 
             // cboType
             // 
@@ -404,7 +411,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtYear.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtYear.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtYear.Location = new System.Drawing.Point(64, 78);
@@ -413,6 +419,7 @@
             this.txtYear.Size = new System.Drawing.Size(45, 26);
             this.txtYear.TabIndex = 123;
             this.txtYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYear_KeyPress);
             // 
             // label8
             // 
@@ -459,7 +466,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtAmount.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtAmount.Location = new System.Drawing.Point(113, 118);
@@ -468,6 +474,7 @@
             this.txtAmount.Size = new System.Drawing.Size(220, 26);
             this.txtAmount.TabIndex = 111;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // cboCategories
             // 
@@ -515,7 +522,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConcept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtConcept.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConcept.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtConcept.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConcept.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtConcept.Location = new System.Drawing.Point(113, 18);
@@ -524,6 +530,7 @@
             this.txtConcept.Size = new System.Drawing.Size(220, 26);
             this.txtConcept.TabIndex = 107;
             this.txtConcept.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtConcept.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConcept_KeyPress);
             // 
             // cboPlaces
             // 
@@ -559,7 +566,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNotes.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtNotes.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNotes.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.txtNotes.Location = new System.Drawing.Point(113, 208);
@@ -568,6 +574,7 @@
             this.txtNotes.Size = new System.Drawing.Size(220, 26);
             this.txtNotes.TabIndex = 109;
             this.txtNotes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtNotes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNotes_KeyPress);
             // 
             // label3
             // 
@@ -595,6 +602,27 @@
             this.btnInsert.TabIndex = 119;
             this.btnInsert.Text = "Insertar";
             this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Gray;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnClose.Location = new System.Drawing.Point(576, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 34);
+            this.btnClose.TabIndex = 126;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // error
+            // 
+            this.error.ContainerControl = this;
             // 
             // Transactions
             // 
@@ -614,6 +642,7 @@
             this.panel1.PerformLayout();
             this.gbInsertTransaction.ResumeLayout(false);
             this.gbInsertTransaction.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -654,5 +683,7 @@
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ErrorProvider error;
     }
 }

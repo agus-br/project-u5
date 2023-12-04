@@ -16,5 +16,21 @@ namespace project_u5.view
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            new view.InsertUpdateCategories().ShowDialog();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            new view.InsertUpdateCategories().ShowDialog();
+        }
     }
 }

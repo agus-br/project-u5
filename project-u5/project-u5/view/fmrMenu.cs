@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace project_u5.view
 {
-    public partial class Places : Form
+    public partial class fmrMenu : Form
     {
-        public Places()
+        public fmrMenu()
         {
             InitializeComponent();
         }
@@ -23,14 +23,19 @@ namespace project_u5.view
             this.Close();
         }
 
-        private void btnInsert_Click(object sender, EventArgs e)
+        private void btnCategories_Click(object sender, EventArgs e)
         {
-            new view.InsertUpdatePlaces().ShowDialog();
+            new view.Categories().ShowDialog();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnPlaces_Click(object sender, EventArgs e)
         {
-            new view.InsertUpdatePlaces().ShowDialog();
+            new view.Places().ShowDialog();
+        }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+            new view.Transactions().ShowDialog();
         }
     }
 }
