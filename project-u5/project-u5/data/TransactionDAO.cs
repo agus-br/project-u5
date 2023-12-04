@@ -74,6 +74,70 @@ namespace project_u5.data
             }
         }
 
+        public static CLSTransaction Get(int transactionID)
+        {
+            CLSTransaction transaction = null;
+            if (Connection.Connect())
+            {
+                //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
+                try
+                {
+                    String sentence = "getTransaction";
+
+                    MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("transactionID", transactionID);
+                    DataTable dt = new DataTable();
+                    MySqlDataAdapter da = new MySqlDataAdapter();
+                    da.SelectCommand = command;
+                    da.Fill(dt);
+
+                    //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        CLSCategory c = new CLSCategory(
+                            Convert.ToInt32(fila["cID"]),
+                            fila["cName"].ToString(),
+                            fila["cDescription"].ToString()
+                        );
+                        CLSPlace p = new CLSPlace(
+                            Convert.ToInt32(fila["pID"]),
+                            fila["pName"].ToString(),
+                            fila["pCity"].ToString(),
+                            fila["pCountry"].ToString()
+                        );
+
+                        transaction = new CLSTransaction(
+                            Convert.ToInt32(fila["tID"]),
+                            fila["tConcept"].ToString(),
+                            Convert.ToDateTime(fila["tDate"]),
+                            Convert.ToDouble(fila["tAmount"]),
+                            fila["tType"].ToString(),
+                            fila["tNotes"].ToString(),
+                            c,
+                            p
+                            );
+                    }
+                    command.Dispose();
+                    //trans.Commit();
+                    return transaction;
+                }
+                catch (Exception e)
+                {
+                    //trans.Rollback();
+                    return transaction;
+                }
+                finally
+                {
+                    Connection.Disconnect();
+                }
+            }
+            else
+            {
+                return transaction;
+            }
+        }
+
         public static int AddTransaction(CLSTransaction t)
         {
             if (Connection.Connect())

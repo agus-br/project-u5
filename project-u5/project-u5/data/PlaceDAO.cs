@@ -58,6 +58,54 @@ namespace project_u5.data
             }
         }
 
+        public static CLSPlace Get(int placeID)
+        {
+            CLSPlace place = null;
+            if (Connection.Connect())
+            {
+                //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
+                try
+                {
+                    String sentence = "getPlace";
+
+                    MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("placeID", placeID);
+                    DataTable dt = new DataTable();
+                    MySqlDataAdapter da = new MySqlDataAdapter();
+                    da.SelectCommand = command;
+                    da.Fill(dt);
+
+                    //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        place = new CLSPlace(
+                            Convert.ToInt32(fila["id"]),
+                            fila["name"].ToString(),
+                            fila["city"].ToString(),
+                            fila["country"].ToString()
+                            );
+                    }
+                    command.Dispose();
+                    //trans.Commit();
+                    return place;
+                }
+                catch (Exception e)
+                {
+                    //trans.Rollback();
+                    return place;
+                }
+                finally
+                {
+                    Connection.Disconnect();
+                }
+            }
+            else
+            {
+                return place;
+            }
+        }
+
         public static int AddPlace(CLSPlace p)
         {
             if (Connection.Connect())
