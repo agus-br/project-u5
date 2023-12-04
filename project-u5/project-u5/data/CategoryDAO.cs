@@ -57,6 +57,53 @@ namespace project_u5.data
             }
         }
 
+        public static CLSCategory Get(int categoryID)
+        {
+            CLSCategory category = null;
+            if (Connection.Connect())
+            {
+                //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
+                try
+                {
+                    String sentence = "getCategory";
+
+                    MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("categoryID", categoryID);
+                    DataTable dt = new DataTable();
+                    MySqlDataAdapter da = new MySqlDataAdapter();
+                    da.SelectCommand = command;
+                    da.Fill(dt);
+
+                    //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        category = new CLSCategory(
+                            Convert.ToInt32(fila["id"]),
+                            fila["name"].ToString(),
+                            fila["description"].ToString()
+                        );
+                    }
+                    command.Dispose();
+                    //trans.Commit();
+                    return category;
+                }
+                catch (Exception e)
+                {
+                    //trans.Rollback();
+                    return category;
+                }
+                finally
+                {
+                    Connection.Disconnect();
+                }
+            }
+            else
+            {
+                return category;
+            }
+        }
+
         public static int AddCategory(CLSCategory c)
         {
             if (Connection.Connect())
