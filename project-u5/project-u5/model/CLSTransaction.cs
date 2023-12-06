@@ -6,10 +6,15 @@ namespace project_u5.model
     {
         // Propiedades
         public int ID { get; set; }
+        public String StoreName
+        {
+            get { return Store.Name; }
+        }
         public String Concept { get; set; }
         public DateTime Date { get; set; }
         public Double Total { get; set; }
         public CLSStore Store { get; set; }
+
 
         // Constructor con parámetros
         public CLSTransaction(int id, String concept, DateTime date, Double total, CLSStore place)

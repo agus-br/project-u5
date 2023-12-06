@@ -11,12 +11,12 @@ namespace project_u5.model
         public String Contact { get; set; }
 
         // Constructor con parámetros
-        public CLSStore(int id, String name, String city, String country)
+        public CLSStore(int id, String name, String address, String contact)
         {
             ID = id;
             Name = name;
-            Address = city;
-            Contact = country;
+            Address = address;
+            Contact = contact;
         }
 
         // Constructor vacío

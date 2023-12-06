@@ -3,6 +3,7 @@ using project_u5.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Transactions;
 
 namespace project_u5.data
 {
@@ -30,8 +31,8 @@ namespace project_u5.data
                     //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
                     foreach (DataRow fila in dt.Rows)
                     {
-                        CLSStore p = new CLSStore(
-                            Convert.ToInt32(fila["pID"]),
+                        CLSStore s = new CLSStore(
+                            Convert.ToInt32(fila["sID"]),
                             fila["sName"].ToString(),
                             fila["sAddress"].ToString(),
                             fila["sContact"].ToString()
@@ -42,7 +43,7 @@ namespace project_u5.data
                             fila["tConcept"].ToString(),
                             Convert.ToDateTime(fila["tDate"]),
                             Convert.ToDouble(fila["tTotal"]),
-                            p
+                            s
                             );
                         transactions.Add(transaction);
                     }
@@ -65,6 +66,66 @@ namespace project_u5.data
                 return transactions;
             }
         }
+
+        public static List<CLSTransaction> GetAllTransactionsByDate(int year, int month)
+        {
+            List<CLSTransaction> transactions = null;
+            if (Connection.Connect())
+            {
+                //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
+                try
+                {
+                    String sentence = "getTransactionsByDate";
+
+                    MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("yyyy", year);
+                    command.Parameters.AddWithValue("mm", month);
+                    DataTable dt = new DataTable();
+                    MySqlDataAdapter da = new MySqlDataAdapter();
+                    da.SelectCommand = command;
+                    da.Fill(dt);
+
+                    transactions = new List<CLSTransaction>();
+                    //Crear un objeto place por cada fila de la tabla y añadirlo a la lista
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        CLSStore s = new CLSStore(
+                            fila["sID"] == DBNull.Value ? 0 : Convert.ToInt32(fila["sID"]),
+                            fila["sName"] == DBNull.Value ? "" : fila["sName"].ToString(),
+                            fila["sAddress"] == DBNull.Value ? "" : fila["sAddress"].ToString(),
+                            fila["sContact"] == DBNull.Value ? "" :fila["sContact"].ToString()
+                        );
+
+                        CLSTransaction transaction = new CLSTransaction(
+                            Convert.ToInt32(fila["tID"]),
+                            fila["tConcept"].ToString(),
+                            Convert.ToDateTime(fila["tDate"]),
+                            Convert.ToDouble(fila["tTotal"]),
+                            s
+                            );
+                        transactions.Add(transaction);
+                    }
+                    command.Dispose();
+                    //trans.Commit();
+                    return transactions;
+                }
+                catch (Exception e)
+                {
+                    //trans.Rollback();
+                    return transactions;
+                }
+                finally
+                {
+                    Connection.Disconnect();
+                }
+            }
+            else
+            {
+                return transactions;
+            }
+        }
+
 
         public static CLSTransaction Get(int transactionID)
         {
@@ -164,7 +225,7 @@ namespace project_u5.data
                 return 0;
             }
         }
-               
+
         public static bool UpdateTransaction(CLSTransaction t)
         {
             if (Connection.Connect())
@@ -203,7 +264,7 @@ namespace project_u5.data
                 return false;
             }
         }
-               
+
         public static bool DeleteTransaction(int transactionID)
         {
             if (Connection.Connect())
@@ -216,7 +277,7 @@ namespace project_u5.data
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("transactionID", transactionID);
-                    
+
                     command.ExecuteNonQuery();
                     command.Dispose();
                     trans.Commit();

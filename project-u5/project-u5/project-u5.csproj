@@ -117,23 +117,23 @@
     <Compile Include="view\fmrMenu.Designer.cs">
       <DependentUpon>fmrMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Report.designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\StoresCatalogue.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\StoresCatalogue.Designer.cs">
       <DependentUpon>StoresCatalogue.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\Report.cs">
+    <Compile Include="view\frmAddUpdateTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\Report.Designer.cs">
-      <DependentUpon>Report.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\frmAddTransaction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\frmAddTransaction.Designer.cs">
-      <DependentUpon>frmAddTransaction.cs</DependentUpon>
+    <Compile Include="view\frmAddUpdateTransaction.Designer.cs">
+      <DependentUpon>frmAddUpdateTransaction.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,14 +150,14 @@
     <EmbeddedResource Include="view\fmrMenu.resx">
       <DependentUpon>fmrMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\StoresCatalogue.resx">
-      <DependentUpon>StoresCatalogue.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="view\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\frmAddTransaction.resx">
-      <DependentUpon>frmAddTransaction.cs</DependentUpon>
+    <EmbeddedResource Include="view\StoresCatalogue.resx">
+      <DependentUpon>StoresCatalogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\frmAddUpdateTransaction.resx">
+      <DependentUpon>frmAddUpdateTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

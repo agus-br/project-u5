@@ -3,26 +3,29 @@ using project_u5.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace project_u5.data
 {
     public class StoreDAO
     {
-        public List<CLSStore> GetAll()
+        public static List<CLSStore> GetAll()
         {
-            List<CLSStore> stores = null;
+            List<CLSStore> stores = new List<CLSStore>();
             if (Connection.Connect())
             {
                 //MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "getAllStores";
+                    String sentence = "getAllStore";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
                     command.CommandType = CommandType.StoredProcedure;
-                    
+                    //command.CommandText = sentence;
+                    //command.Connection = Connection.CurrentConnection;
                     DataTable dt = new DataTable();
                     MySqlDataAdapter da = new MySqlDataAdapter();
+                    
                     da.SelectCommand = command;
                     da.Fill(dt);
 
@@ -30,13 +33,13 @@ namespace project_u5.data
                     stores = new List<CLSStore>();
                     foreach (DataRow fila in dt.Rows)
                     {
-                        CLSStore place = new CLSStore(
+                        CLSStore store = new CLSStore(
                             Convert.ToInt32(fila["id"]),
                             fila["name"].ToString(),
                             fila["address"].ToString(),
                             fila["contact"].ToString()
                             );
-                        stores.Add(place);
+                        stores.Add(store);
                     }
                     command.Dispose();
                     //trans.Commit();
@@ -44,6 +47,7 @@ namespace project_u5.data
                 }
                 catch (Exception e)
                 {
+                    //MessageBox.Show("aqui");
                     //trans.Rollback();
                     return stores;
                 }
@@ -58,7 +62,7 @@ namespace project_u5.data
             }
         }
 
-        public CLSStore Get(int storeID)
+        public static CLSStore Get(int storeID)
         {
             CLSStore store = null;
             if (Connection.Connect())
@@ -106,20 +110,20 @@ namespace project_u5.data
             }
         }
 
-        public int AddPlace(CLSStore s)
+        public static int AddStore(CLSStore s)
         {
             if (Connection.Connect())
             {
                 MySqlTransaction trans = Connection.CurrentConnection.BeginTransaction();
                 try
                 {
-                    String sentence = "addPlace";
+                    String sentence = "addStore";
 
                     MySqlCommand command = new MySqlCommand(sentence, Connection.CurrentConnection);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("placeName", s.Name);
-                    command.Parameters.AddWithValue("placeCity", s.Address);
-                    command.Parameters.AddWithValue("placeCountry", s.Contact);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("StoreName", s.Name);
+                    command.Parameters.AddWithValue("StoreAddress", s.Address);
+                    command.Parameters.AddWithValue("StoreContact", s.Contact);
 
                     command.ExecuteNonQuery();
                     command.Dispose();
@@ -148,7 +152,7 @@ namespace project_u5.data
             }
         }
 
-        public bool UpdatePlace(CLSStore s)
+        public static bool UpdateStore(CLSStore s)
         {
             if (Connection.Connect())
             {
@@ -186,7 +190,7 @@ namespace project_u5.data
             }
         }
 
-        public bool DeletePlace(int storeID)
+        public static int DeleteStore(int storeID)
         {
             if (Connection.Connect())
             {
@@ -203,12 +207,17 @@ namespace project_u5.data
                     command.Dispose();
                     trans.Commit();
 
-                    return true;
+                    return 1;
+                }
+                catch (MySqlException e)
+                {
+                    trans.Rollback();
+                    return e.Number;
                 }
                 catch (Exception e)
                 {
                     trans.Rollback();
-                    return false;
+                    return -1; 
                 }
                 finally
                 {
@@ -217,7 +226,7 @@ namespace project_u5.data
             }
             else
             {
-                return false;
+                return -2;
             }
         }
 

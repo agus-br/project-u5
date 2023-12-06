@@ -7,8 +7,8 @@ namespace project_u5.data
     {
         public static MySqlConnection CurrentConnection;
 
-        //public static String ConnectionString = @"server=azure-mysql-projects.mysql.database.azure.com;uid=todopoderoso;pwd=maquinadefuego_69;database=project5";
-        public static String ConnectionString = @"server=localhost;uid=root;pwd=root;database=project5";
+        public static String ConnectionString = @"server=azure-mysql-projects.mysql.database.azure.com;uid=todopoderoso;pwd=maquinadefuego_69;database=project5";
+        //public static String ConnectionString = @"server=localhost;uid=root;pwd=root;database=project5";
 
         public static bool Connect()
         {

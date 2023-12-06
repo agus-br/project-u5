@@ -34,12 +34,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.dgvPlaces = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStores = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlaces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStores)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,6 +107,7 @@
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnInsert
             // 
@@ -127,38 +125,13 @@
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // dgvPlaces
+            // dgvStores
             // 
-            this.dgvPlaces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlaces.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dgvPlaces.Location = new System.Drawing.Point(63, 103);
-            this.dgvPlaces.Name = "dgvPlaces";
-            this.dgvPlaces.Size = new System.Drawing.Size(346, 150);
-            this.dgvPlaces.TabIndex = 8;
-            // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Dirección";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Contacto";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.dgvStores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStores.Location = new System.Drawing.Point(63, 103);
+            this.dgvStores.Name = "dgvStores";
+            this.dgvStores.Size = new System.Drawing.Size(346, 150);
+            this.dgvStores.TabIndex = 8;
             // 
             // StoresCatalogue
             // 
@@ -169,7 +142,7 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.dgvPlaces);
+            this.Controls.Add(this.dgvStores);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -177,7 +150,7 @@
             this.Text = "Places";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlaces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStores)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,10 +162,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.DataGridView dgvPlaces;
+        private System.Windows.Forms.DataGridView dgvStores;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

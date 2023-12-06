@@ -1,0 +1,176 @@
+-- admin - todopoderoso
+-- pass - maquinadefuego_69
+-- host - azure-mysql-projects.mysql.database.azure.com
+drop database if exists project5;
+create database project5;
+use project5;
+
+-- Create Places table
+create table stores (
+    id int primary key auto_increment,
+    name varchar(50) not null,
+    address varchar(100) null default '',
+    contact varchar(50) null default ''
+);
+-- Create Transactions table
+create table transactions (
+    id int primary key auto_increment,
+    concept varchar(100) not null,
+    date datetime not null,
+    Total decimal(10, 2) not null,
+    storeid int null,  -- This field represents the id from places table
+    foreign key (storeid) references stores(id) 
+    on update cascade on delete restrict
+);
+
+-- Stored Procedure para obtener todas los lugares
+delimiter //
+create procedure getAllStore()
+begin
+    select * from stores;
+end //
+delimiter ;
+
+-- Stored Procedure para obtener un lugar
+
+delimiter //
+create procedure getStore(
+	in storeID int
+)
+begin
+    select * from stores where id = storeID;
+end //
+delimiter ;
+
+
+-- Stored Procedure para agregar un lugar
+delimiter //
+create procedure addStore(
+    in storeName varchar(50),
+    in storeAddress varchar(100),
+    in storeContact varchar(50)
+)
+begin
+    insert into stores values 
+		(null, storeName, storeAddress, storeContact);
+end //
+delimiter ;
+
+
+-- Stored Procedure para actualizar un lugar
+delimiter //
+create procedure updateStore(
+    in storeID int,
+    in storeName varchar(50),
+    in storeAddress varchar(100),
+    in storeContact varchar(50)
+)
+begin
+    update stores set 
+		name = storeName, 
+		address = storeAddress, 
+		contact = storeContact 
+    where id = storeID;
+end //
+delimiter ;
+
+
+-- Stored Procedure para eliminar un lugar
+delimiter //
+create procedure deleteStore(
+    in storeID int
+)
+begin
+    delete from stores where id = storeID;
+end //
+delimiter ;
+
+-- Stored Procedure para agregar una transacción
+delimiter //
+create procedure addTransaction(
+    in transactionConcept varchar(100),
+    in transactionDate datetime,
+    in transactionTotal decimal(10, 2),
+    in transactionStoreID int
+)
+begin
+    insert into transactions
+    values (null, transactionConcept, transactionDate, transactionTotal, transactionStoreID);
+end //
+delimiter ;
+
+-- Stored Procedure para actualizar una transacción
+delimiter //
+create procedure updateTransaction(
+    in transactionID int,
+    in transactionConcept varchar(100),
+    in transactionDate date,
+    in transactionTotal decimal(10, 2),
+    in transactionStoreID int
+)
+begin
+    update transactions set
+		concept = transactionConcept,
+		date = transactionDate,
+		Total = transactionTotal,
+		storeid = transactionStoreID
+    where id = transactionID;
+end //
+delimiter ;
+
+-- Stored Procedure para eliminar una transacción
+delimiter //
+create procedure deleteTransaction(in transactionID int)
+begin
+    delete from transactions where id = transactionID;
+    
+end //
+delimiter ;
+
+delimiter //
+create procedure getTransactionsByDate
+(in yyyy int, in mm int)
+begin
+	if(mm = -1) then 
+		select t.id as tID, t.concept as tConcept, t.date as tDate,
+			t.Total as tTotal,
+			s.id as sID, s.name as sName, s.address as sAddress, s.contact as sContact
+		from transactions t
+		join stores s on t.storeid = s.id 
+		where year(date) = yyyy;
+	else 
+		select t.id as tID, t.concept as tConcept, t.date as tDate,
+			t.Total as tTotal,
+			s.id as sID, s.name as sName, s.address as sAddress, s.contact as sContact
+		from transactions t
+		join stores s on t.storeid = s.id 
+		where year(date) = yyyy and month(date) = mm;
+    end if;
+end //
+delimiter ;
+
+delimiter //
+create procedure getTransaction(
+	in transactionID int
+)
+begin
+    select t.id as tID, t.concept as tConcept, t.date as tDate,
+		t.Total as tTotal,
+		s.id as sID, s.name as sName, s.address as sAddress, s.contact as sContact
+	from transactions t 
+	join stores s on t.storeid = s.id
+    where t.id = transactionID;
+end //
+delimiter ;
+
+delimiter //
+create procedure getAllTransactions()
+begin
+    select t.id as tID, t.concept as tConcept, t.date as tDate,
+		t.Total as tTotal,
+		s.id as sID, s.name as sName, s.address as sAddress, s.contact as sContact
+	from transactions t
+	join stores s on t.storeid = s.id
+	group by t.id;
+end //
+delimiter ;

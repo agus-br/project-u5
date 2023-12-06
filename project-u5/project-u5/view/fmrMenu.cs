@@ -29,7 +29,7 @@ namespace project_u5.view
 
         private void btnTransactions_Click(object sender, EventArgs e)
         {
-            new view.frmAddTransaction().ShowDialog();
+            new view.Report().ShowDialog();
         }
     }
 }

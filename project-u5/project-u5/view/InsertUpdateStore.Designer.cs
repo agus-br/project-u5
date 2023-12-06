@@ -37,9 +37,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtContact = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
@@ -91,11 +91,11 @@
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInsert.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsert.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnInsert.Location = new System.Drawing.Point(50, 227);
+            this.btnInsert.Location = new System.Drawing.Point(50, 237);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(305, 34);
             this.btnInsert.TabIndex = 20;
-            this.btnInsert.Text = "Insertar";
+            this.btnInsert.Text = "Aceptar";
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -144,22 +144,22 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Dirección";
             // 
-            // txtCity
+            // txtAddress
             // 
-            this.txtCity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCity.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtCity.Location = new System.Drawing.Point(126, 127);
-            this.txtCity.MaxLength = 50;
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(267, 26);
-            this.txtCity.TabIndex = 17;
-            this.txtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
+            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAddress.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtAddress.Location = new System.Drawing.Point(126, 127);
+            this.txtAddress.MaxLength = 50;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(267, 26);
+            this.txtAddress.TabIndex = 17;
+            this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // label4
             // 
@@ -173,22 +173,22 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Contacto";
             // 
-            // txtCountry
+            // txtContact
             // 
-            this.txtCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtContact.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCountry.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtCountry.Location = new System.Drawing.Point(125, 175);
-            this.txtCountry.MaxLength = 50;
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(268, 26);
-            this.txtCountry.TabIndex = 19;
-            this.txtCountry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountry_KeyPress);
+            this.txtContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContact.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtContact.Location = new System.Drawing.Point(125, 175);
+            this.txtContact.MaxLength = 50;
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new System.Drawing.Size(268, 26);
+            this.txtContact.TabIndex = 19;
+            this.txtContact.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountry_KeyPress);
             // 
             // InsertUpdateStore
             // 
@@ -197,9 +197,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(405, 283);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.txtCountry);
+            this.Controls.Add(this.txtContact);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
@@ -221,9 +221,9 @@
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.ErrorProvider error;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
